@@ -1,14 +1,27 @@
 <%- include('partials/header') %>
 
-<main>
+<main class="page-layout">
+
     <h1><%= title %></h1>
 
-        <p>Categories:</p>
-        <ul>
-            <li>Environmental</li>
-            <li>Educational</li>
-            <li>Community Service</li>
-            <li>Health and Wellness</li>
+    <p class="page-intro">
+        Browse service opportunities by category.
+    </p>
+
+    <section class="categories-nav">
+
+        <a href="#" class="category-pill">Environmental</a>
+
+        <a href="#" class="category-pill">Educational</a>
+
+        <a href="#" class="category-pill">Community Service</a>
+
+        <a href="#" class="category-pill">Health and Wellness</a>
+
+    </section>
+    <section class="card-grid">
+    </section>  
+
 </main>
 
 <%- include('partials/footer') %>

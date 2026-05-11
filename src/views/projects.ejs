@@ -1,11 +1,50 @@
 <%- include('partials/header') %>
-<main>
+
+<main class="page-layout">
+
     <h1><%= title %></h1>
-        <h2>Upcoming Service Projects</h2>
-        <ul>
-            <li>Park Cleanup - Join us to clean up local parks and make them beautiful!</li>
-            <li>Food Drive - Help collect and distribute food to those in need.</li>
-            <li>Community Tutoring - Volunteer to tutor students in various subjects.</li>
-        </ul>
-    </main>
-<%- include('partials/header') %>
+
+    <p class="page-intro">
+        Explore upcoming opportunities to serve and strengthen your community.
+    </p>
+
+    <section class="card-grid">
+
+        <article class="card project-card">
+            <h2>Park Cleanup</h2>
+
+            <p>
+                Join volunteers in cleaning local parks, removing litter,
+                and helping create a healthier environment for everyone.
+            </p>
+
+            <span class="project-tag">Environmental Service</span>
+        </article>
+
+        <article class="card project-card">
+            <h2>Food Drive</h2>
+
+            <p>
+                Help collect, organize, and distribute food donations to
+                families and individuals facing food insecurity.
+            </p>
+
+            <span class="project-tag">Community Outreach</span>
+        </article>
+
+        <article class="card project-card">
+            <h2>Community Tutoring</h2>
+
+            <p>
+                Volunteer your time to tutor students in reading, math,
+                science, and other important subjects.
+            </p>
+
+            <span class="project-tag">Education Support</span>
+        </article>
+
+    </section>
+
+</main>
+
+<%- include('partials/footer') %>
