@@ -199,7 +199,7 @@ nav a:focus {
     padding: 0.5rem;
 }
 
-.organization-info p {
+.organization-info {
     color: var(--muted-text);
 
     font-size: 0.95rem;
