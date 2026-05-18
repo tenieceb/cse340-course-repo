@@ -6,4 +6,5 @@ const projectsPage = async (req, res) => {
 
     res.render('projects', { title, projects });
 };
+
 export { projectsPage };
