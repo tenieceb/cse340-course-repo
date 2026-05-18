@@ -10,38 +10,14 @@
 
     <section class="card-grid">
 
-        <article class="card project-card">
-            <h2>Park Cleanup</h2>
+            
 
-            <p>
-                Join volunteers in cleaning local parks, removing litter,
-                and helping create a healthier environment for everyone.
-            </p>
+    <% projects.forEach(project => { %>
+        <p class="card project-info">
+            <strong><%= project.date.toLocaleDateString() %></strong>: <%= project.title %> 
+            <br><i><%= project.organization_name %></i></p>
+    <% }); %>
 
-            <span class="project-tag">Environmental Service</span>
-        </article>
-
-        <article class="card project-card">
-            <h2>Food Drive</h2>
-
-            <p>
-                Help collect, organize, and distribute food donations to
-                families and individuals facing food insecurity.
-            </p>
-
-            <span class="project-tag">Community Outreach</span>
-        </article>
-
-        <article class="card project-card">
-            <h2>Community Tutoring</h2>
-
-            <p>
-                Volunteer your time to tutor students in reading, math,
-                science, and other important subjects.
-            </p>
-
-            <span class="project-tag">Education Support</span>
-        </article>
 
     </section>
 
