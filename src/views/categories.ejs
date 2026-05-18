@@ -9,15 +9,11 @@
     </p>
 
     <section class="categories-nav">
-
-        <a href="#" class="category-pill">Environmental</a>
-
-        <a href="#" class="category-pill">Educational</a>
-
-        <a href="#" class="category-pill">Community Service</a>
-
-        <a href="#" class="category-pill">Health and Wellness</a>
-
+        <% categories.forEach(category => { %>
+            <a href="#" class="category-pill" data-category="<%= category.category_id %>">
+                <%= category.name %>
+            </a>
+        <% }); %>
     </section>
     <section class="card-grid">
     </section>  

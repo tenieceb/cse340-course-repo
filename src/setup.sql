@@ -40,3 +40,62 @@ VALUES
 (3, 'Holiday Toy Drive', 'Collecting and distributing toys to children in need during the holiday season.', 'Springfield Community Hall', '2024-12-10'),
 (3, 'Senior Assistance Program', 'Providing support and companionship to senior citizens through regular visits and activities.', 'Various locations in Springfield', '2024-11-01'),
 (3, 'Food Bank Support', 'Organizing food drives and volunteer shifts to support the local food bank.', 'Springfield Food Bank', '2024-10-01');
+
+CREATE TABLE category (
+    category_id SERIAL PRIMARY KEY,
+	name VARCHAR(100) NOT NULL UNIQUE
+	);
+
+INSERT INTO category (name)
+	VALUES
+	('Community Development'),
+	('Environment and Sustainability'),
+	('Education and Mentorship'),
+	('Food and Agriculture'),
+	('Volunteer Outreach'),
+	('Arts and Culture'),
+	('Housing and Infrastructure');
+
+CREATE TABLE project_category (
+    project_id INTEGER NOT NULL REFERENCES project(project_id) ON DELETE CASCADE,
+    category_id INTEGER NOT NULL REFERENCES category(category_id) ON DELETE CASCADE,
+    PRIMARY KEY (project_id, category_id)
+);
+
+INSERT INTO project_category (project_id,category_id)
+	VALUES
+	-- Community Park Renovation
+	(1, 1),
+	-- Neighborhood Clean-Up
+	(2, 1),
+	(2, 5),
+	-- Affordable Housing Project
+	(3, 7),
+	-- Public Art Installation
+	(4, 6),
+	-- Community Center Expansion
+	(5, 1),	
+	-- Urban Farm Expansion
+	(6, 2),
+	(6, 4),
+	-- Community Composting Program
+	(7, 2),
+	-- Urban Garden Installation
+	(8, 2),
+	(8, 4),
+	-- Farmers Market Launch
+	(9, 4),
+	-- Composting Workshop
+	(10, 2),
+	(10, 3),
+	-- Youth Mentorship Program
+	(11, 3),
+	-- Community Tutoring Initiative
+	(12, 3),
+	-- Holiday Toy Drive
+	(13, 5),
+	-- Senior Assistance Program
+	(14, 5),
+	-- Food Bank Support
+	(15, 5),
+	(15, 4);
