@@ -10,16 +10,33 @@
 
     <section class="card-grid">
 
-            
-
     <% projects.forEach(project => { %>
-        <p class="card project-info">
-            <strong><%= project.date.toLocaleDateString() %></strong>: <%= project.title %> 
-            <br><i><%= project.organization_name %></i></p>
+
+        <div class="project-wrapper">
+
+            <a href="/project/<%= project.project_id %>" class="card project-card">
+
+                <strong><%= project.date.toLocaleDateString() %></strong>
+
+                <br>
+
+                <span><%= project.title %></span>
+
+            </a>
+
+            <div class="card-meta">
+                <i>
+                    <a href="/organization/<%= project.organization_id %>">
+                        <%= project.organization_name %>
+                    </a>
+                </i>
+            </div>
+
+        </div>
+
     <% }); %>
 
-
-    </section>
+</section>
 
 </main>
 
