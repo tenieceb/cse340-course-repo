@@ -215,6 +215,17 @@ nav a:focus {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    text-decoration: none;
+    color: inherit;
+
+    border-radius: 10px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
 .project-card p {
@@ -235,6 +246,24 @@ nav a:focus {
 
     font-size: 0.85rem;
     font-weight: 600;
+}
+
+.project-card strong {
+    font-weight: 600;
+}
+
+.project-card span {
+    display: block;
+}
+
+.card-meta a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.card-meta a:hover {
+    text-decoration: underline;
 }
 
 /* =========================

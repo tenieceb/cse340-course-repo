@@ -99,3 +99,26 @@ INSERT INTO project_category (project_id,category_id)
 	-- Food Bank Support
 	(15, 5),
 	(15, 4);
+
+-- To update the date to happen in the future
+UPDATE project
+SET date = CASE
+    WHEN project_id = 1 THEN DATE '2026-06-15'
+    WHEN project_id = 2 THEN DATE '2026-06-22'
+    WHEN project_id = 3 THEN DATE '2026-07-05'
+    WHEN project_id = 4 THEN DATE '2026-07-18'
+    WHEN project_id = 5 THEN DATE '2026-08-01'
+
+    WHEN project_id = 6 THEN DATE '2026-06-10'
+    WHEN project_id = 7 THEN DATE '2026-06-28'
+    WHEN project_id = 8 THEN DATE '2026-07-12'
+    WHEN project_id = 9 THEN DATE '2026-07-26'
+    WHEN project_id = 10 THEN DATE '2026-08-09'
+
+    WHEN project_id = 11 THEN DATE '2026-06-17'
+    WHEN project_id = 12 THEN DATE '2026-07-01'
+    WHEN project_id = 13 THEN DATE '2026-11-20'
+    WHEN project_id = 14 THEN DATE '2026-09-14'
+    WHEN project_id = 15 THEN DATE '2026-08-23'
+END
+WHERE project_id IN (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15);
