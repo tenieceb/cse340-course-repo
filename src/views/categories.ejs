@@ -10,7 +10,7 @@
 
     <section class="categories-nav">
         <% categories.forEach(category => { %>
-            <a href="#" class="category-pill" data-category="<%= category.category_id %>">
+            <a href="/category/<%= category.category_id %>" class="category-pill" data-category="<%= category.category_id %>">
                 <%= category.name %>
             </a>
         <% }); %>

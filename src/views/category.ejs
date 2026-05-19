@@ -1,0 +1,38 @@
+<%- include('partials/header') %>
+<main>
+    <h1><%= title %></h1>
+
+    <h2><%= categoryDetails.name %></h2>
+
+    <h3>Service Projects</h3>
+    <section class="card-grid">
+
+    <% projects.forEach(project => { %>
+
+        <div class="project-wrapper">
+
+            <a href="/project/<%= project.project_id %>" class="card project-card">
+
+                <strong><%= project.date.toLocaleDateString() %></strong>
+
+                <br>
+
+                <span><%= project.title %></span>
+
+            </a>
+
+            <div class="card-meta">
+                <i>
+                    <a href="/organization/<%= project.organization_id %>">
+                        <%= project.organization_name %>
+                    </a>
+                </i>
+            </div>
+
+        </div>
+
+    <% }); %>
+
+</section>
+</main>
+<%- include('partials/footer') %>

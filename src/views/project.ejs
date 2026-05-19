@@ -10,5 +10,13 @@
     <p><%= projectDetails.location %></p>
     <h3>Organization:</h3>
     <p><a href="/organization/<%= projectDetails.organization_id %>"><%= projectDetails.organization_name %></a></p>
+    <h3>Categories:</h3>    
+    <section class="categories-nav">
+        <% projectCategories.forEach(category => { %>
+            <a href="/category/<%= category.category_id %>" class="category-pill" data-category="<%= category.category_id %>">
+                <%= category.name %>
+            </a>
+        <% }); %>
+    </section>
 </main>
 <%- include('partials/footer') %>
