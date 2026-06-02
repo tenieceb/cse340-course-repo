@@ -3,6 +3,7 @@ import { getAllOrganizations } from '../models/organizations.js';
 import {body, validationResult} from 'express-validator';
 
 const projectValidation = [
+    
     body('title')
         .trim()
         .notEmpty().withMessage('Title is required')
@@ -50,6 +51,16 @@ const showNewProjectForm = async (req, res) => {
 
 const processNewProjectForm = async (req, res) => {
     const {organizationId, title, description, location, date} = req.body;
+    console.log(req.body);
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        errors.array().forEach((error) => {
+            req.flash('error', error.msg);
+        });
+        res.redirect('/new-project');
+        return;
+    }
     try {
         const newProjectId = await createProject(organizationId, title, description, location, date);
         req.flash('success', 'Project added successfully!');
@@ -62,4 +73,4 @@ const processNewProjectForm = async (req, res) => {
 }
 
 
-export { projectsPage, showProjectDetailsPage, showNewProjectForm, processNewProjectForm };
+export { projectsPage, showProjectDetailsPage, showNewProjectForm, processNewProjectForm, projectValidation };
