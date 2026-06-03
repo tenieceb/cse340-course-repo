@@ -1,4 +1,4 @@
-import { getAllCategories, getProjectsByCategoryId, getCategoryById, updateCategoryAssignment  } from '../models/categories.js';
+import { getAllCategories, getProjectsByCategoryId, getCategoryById, updateCategoryAssignment, createCategory, updateCategory  } from '../models/categories.js';
 import { getProjectById, getCategoriesByProjectId} from '../models/projects.js';
 
 const categoriesPage = async (req, res) => {
@@ -40,8 +40,32 @@ const processAssignCategoriesForm = async (req, res) => {
     res.redirect(`/project/${projectId}`);
 };
 
+const showNewCategoryForm = async (req, res) => {
+    const title = 'Add New Category';
 
+    res.render('new-category', { title });
+};
 
+const processNewCategoryForm = async (req, res) => {
+    const { name } = req.body;
+    await createCategory(name);
+    req.flash('success', 'Category created successfully.');
+    res.redirect('/categories');
+};
 
+const showEditCategoryForm = async (req, res) => {
+    const categoryId = req.params.id;
+    const categoryDetails = await getCategoryById(categoryId);
+    const title = 'Edit Category';
+    res.render('edit-category', { title, categoryDetails });
+};
 
-export { categoriesPage, showCategoryDetailsPage, showAssignCategoriesForm, processAssignCategoriesForm };
+const processEditCategoryForm = async (req, res) => {
+    const categoryId = req.params.id;
+    const { name } = req.body;
+    await updateCategory(categoryId, name);
+    req.flash('success', 'Category updated successfully.');
+    res.redirect(`/category/${categoryId}`);
+};
+
+export { categoriesPage, showCategoryDetailsPage, showAssignCategoriesForm, processAssignCategoriesForm, showNewCategoryForm, processNewCategoryForm, showEditCategoryForm, processEditCategoryForm };
