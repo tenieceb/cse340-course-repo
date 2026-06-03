@@ -1,5 +1,15 @@
 import { getAllCategories, getProjectsByCategoryId, getCategoryById, updateCategoryAssignment, createCategory, updateCategory  } from '../models/categories.js';
 import { getProjectById, getCategoriesByProjectId} from '../models/projects.js';
+import { body, validationResult } from 'express-validator';
+
+const categoryValidation = [
+    body('name')
+        .trim()
+        .notEmpty()
+        .withMessage('Category name is required')
+        .isLength({ min: 3, max: 150 })
+        .withMessage('Category name must be between 3 and 150 characters')
+];
 
 const categoriesPage = async (req, res) => {
     const categories = await getAllCategories();
@@ -42,12 +52,20 @@ const processAssignCategoriesForm = async (req, res) => {
 
 const showNewCategoryForm = async (req, res) => {
     const title = 'Add New Category';
-
+    
     res.render('new-category', { title });
 };
 
 const processNewCategoryForm = async (req, res) => {
+    const results = validationResult(req);
+    if (!results.isEmpty()) {
+        results.array().forEach((error) => {
+            req.flash('error', error.msg);
+        });
+        return res.redirect('/new-category');
+    }
     const { name } = req.body;
+
     await createCategory(name);
     req.flash('success', 'Category created successfully.');
     res.redirect('/categories');
@@ -62,10 +80,17 @@ const showEditCategoryForm = async (req, res) => {
 
 const processEditCategoryForm = async (req, res) => {
     const categoryId = req.params.id;
+    const results = validationResult(req);
+    if (!results.isEmpty()) {
+        results.array().forEach((error) => {
+            req.flash('error', error.msg);
+        });
+        return res.redirect(`/edit-category/${categoryId}`);
+    }
     const { name } = req.body;
     await updateCategory(categoryId, name);
     req.flash('success', 'Category updated successfully.');
     res.redirect(`/category/${categoryId}`);
 };
 
-export { categoriesPage, showCategoryDetailsPage, showAssignCategoriesForm, processAssignCategoriesForm, showNewCategoryForm, processNewCategoryForm, showEditCategoryForm, processEditCategoryForm };
+export { categoriesPage, showCategoryDetailsPage, showAssignCategoriesForm, processAssignCategoriesForm, showNewCategoryForm, processNewCategoryForm, showEditCategoryForm, processEditCategoryForm, categoryValidation };
